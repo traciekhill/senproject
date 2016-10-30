@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>EERT</h1>
+    <p class="lead">EERT is an employee evaluation tool.</p>
+    <p>
+        @Html.ActionLink("Frequently Asked Questions", "Index", "CustomerFAQ", new { area = "CustomerFAQ" }, null)
+    </p>
+
+    <p>
+        @Html.ActionLink("Manager's View", "Index", "Employees", new { area = "Employees" }, null)
+    </p>
+
+    <p>
+        @Html.ActionLink("Customer Service Representative", "Index", "CSR", new { area = "CSR" }, null)
+    </p>
+</div>
+

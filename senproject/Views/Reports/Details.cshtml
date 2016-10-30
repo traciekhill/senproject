@@ -1,0 +1,58 @@
+﻿@model senproject.Models.Report
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Report</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StarRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StarRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResolutionStartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResolutionStartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResolutionEndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResolutionEndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
