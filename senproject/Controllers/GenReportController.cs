@@ -31,6 +31,7 @@ namespace senproject.Controllers
             
             ViewBag.Employee = GetEmployees();
             ViewBag.Report = GetReport();
+            //ViewBag.Report = GetReport();
             return View();
         }
         
