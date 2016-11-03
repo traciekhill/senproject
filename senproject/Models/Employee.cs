@@ -33,5 +33,9 @@ namespace senproject.Models
         public virtual ICollection<Employee> Employee1 { get; set; }
         public virtual Employee Employee2 { get; set; }
         public virtual Login Login { get; set; }
+
+       
+
+        
     }
 }
