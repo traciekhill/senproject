@@ -20,6 +20,7 @@ namespace senproject.Controllers
             var reports = db.Reports.Include(r => r.Login);
             return View(reports.ToList());
         }
+        
 
         // GET: Reports/Details/5
         public ActionResult Details(int? id)
@@ -33,7 +34,7 @@ namespace senproject.Controllers
             {
                 return HttpNotFound();
             }
-            return View(report);
+           return View(report);
         }
 
         // GET: Reports/Create

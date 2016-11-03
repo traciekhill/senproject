@@ -20,6 +20,7 @@ namespace senproject.Controllers
             var employees = db.Employees.Include(e => e.Employee2).Include(e => e.Login);
             return View(employees.ToList());
         }
+       
 
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
