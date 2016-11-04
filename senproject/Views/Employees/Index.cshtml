@@ -51,7 +51,7 @@
             @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DOB)
+            @item.DOB.ToShortDateString()
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Role)
@@ -63,7 +63,11 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }) |
+            @if(item.Role != 0)
+            {
+                @Html.ActionLink("Generate Report", "ReportDetails", new { id=item.Id })
+            }
         </td>
     </tr>
 }
