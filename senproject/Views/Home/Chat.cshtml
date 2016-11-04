@@ -6,6 +6,9 @@
     <input type="text" id="message" />
     <input type="button" id="sendmessage" value="Send" />
     <input type="hidden" id="displayname" />
+    <p>Please enter a rating when finished and click submit!</p>
+    <input type="text" id="rating" />
+    <input type="button" id="submit" value="submitRating" />
     <ul id="discussion"></ul>
 </div>
 @section scripts {
@@ -35,7 +38,7 @@
             $.connection.hub.start().done(function () {
                 $('#sendmessage').click(function () {
                     // Call the Send method on the hub.
-                    chat.server.send($('#displayname').val(), $('#message').val());
+                    chat.server.send($('#displayname').val(), $('#message').val(), 1);
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
                 });

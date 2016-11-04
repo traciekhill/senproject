@@ -75,20 +75,63 @@ namespace senproject.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+           var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            /*switch (result)
+           {
+               case SignInStatus.Success:
+                   return RedirectToLocal(returnUrl);
+               case SignInStatus.LockedOut:
+                   return View("Lockout");
+               case SignInStatus.RequiresVerification:
+                   return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+               case SignInStatus.Failure:
+               default:
+                   ModelState.AddModelError("", "Invalid login attempt.");
+                   return View(model);
+           }*/
+            EERTEntities2 db = new EERTEntities2();
+
+            string Username = model.Email;
+            string password = model.Password;
+            var UserList = db.Logins.ToList().ToArray();
+            int role=-1;
+            int UserID=-1;
+            bool flag = false;
+            for(int i=0;i<UserList.Length;i++)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                if (UserList[i].UserName.Equals(Username)){
+                    UserID = UserList[i].UserId;
+                    flag = true;
+                    var EmployeeList = db.Employees.ToList().ToArray();
+                    for(int i2 = 0; i2 < EmployeeList.Length; i2++)
+                    {
+                        if(EmployeeList[i2].UserId==UserID)
+                        {
+                            Session["UserID"] = UserID;
+                            role = EmployeeList[i2].Role;
+                            break;
+                        }
+                    }
+                }
             }
+            if (flag==true)
+            {
+                Session["Role"] = role;
+                if (role == 1)
+                {
+                    ChatController setting = new ChatController(UserID, role);
+                    return RedirectToLocal("/home/Chat");
+                }
+                else if (role == 0)
+                    return RedirectToLocal("/Employees?area=Employees");
+
+            }else
+            {
+                ModelState.AddModelError("","Incorrect Username or password!");
+            }
+
+            
+            return View(model);
         }
 
         //
