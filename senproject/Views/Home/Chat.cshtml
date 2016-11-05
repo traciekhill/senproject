@@ -5,9 +5,9 @@
 <div class="container">
     <input type="text" id="message" />
     <input type="button" id="sendmessage" value="Send" />
+    <input type="text" id="Rating" />
+    <input type="button" id="SendFeedback" value="Submit feedback" />
     <input type="hidden" id="displayname" />
-    
-    @Html.ActionLink("Leave Feedback","Create","Reports", null,null)
     <ul id="discussion"></ul>
 </div>
 @section scripts {
@@ -41,12 +41,18 @@
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
                 });
+                
             });
+          
+
         });
         // This optional function html-encodes messages for display in the page.
         function htmlEncode(value) {
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
         }
+        $('#SendFeedback').click(function () {
+            chat.server.SubmitFeedback($('Rating').val());
+        });
     </script>
 }

@@ -27,6 +27,11 @@ namespace senproject
     public class ChatHub : Hub
     {
         protected EERTEntities2 db = new EERTEntities2();
+        ChatController chatty;
+        public ChatHub()
+        {
+            chatty = new ChatController();
+        }
 
         public void Send(string name, string message, int userID)
         {
@@ -49,7 +54,10 @@ namespace senproject
             db.CustomerChats.Add(chat);
             db.SaveChanges();
         }
-
+        public void SubmitFeedback(int stars)
+        {
+            ChatController.feedback(stars);
+        }
     }
 }
 
