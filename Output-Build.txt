@@ -1,0 +1,18 @@
+﻿1>------ Build started: Project: senproject, Configuration: Release Any CPU ------
+1>  senproject -> C:\Users\traci\documents\visual studio 2015\Projects\senproject\senproject\bin\senproject.dll
+2>------ Publish started: Project: senproject, Configuration: Release Any CPU ------
+2>Transformed Web.config using C:\Users\traci\documents\visual studio 2015\Projects\senproject\senproject\Web.Release.config into obj\Release\TransformWebConfig\transformed\Web.config.
+2>Insert additional ConnectionString Transformed obj\Release\TransformWebConfig\transformed\Web.config into obj\Release\InsertAdditionalCS\transformed\Web.config.
+2>Auto ConnectionString Transformed Views\Web.config into obj\Release\CSAutoParameterize\transformed\Views\Web.config.
+2>Auto ConnectionString Transformed obj\Release\InsertAdditionalCS\transformed\Web.config into obj\Release\CSAutoParameterize\transformed\Web.config.
+2>Copying all files to temporary location below for package/publish:
+2>obj\Release\Package\PackageTmp.
+2>Start Web Deploy Publish the Application/package to https://eert.scm.azurewebsites.net/msdeploy.axd?site=EERT ...
+2>Adding ACL's for path (EERT)
+2>Adding ACL's for path (EERT)
+2>Adding ACL's for path (EERT)
+2>Adding ACL's for path (EERT)
+2>Publish Succeeded.
+2>Web App was published successfully http://eert.azurewebsites.net/
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Publish: 1 succeeded, 0 failed, 0 skipped ==========
