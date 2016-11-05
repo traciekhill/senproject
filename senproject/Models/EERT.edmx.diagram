@@ -6,10 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="83d044c4cc1e40b8a768533d86f200b3" Name="Diagram1">
         <EntityTypeShape EntityType="EERTModel.CustomerChat" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EERTModel.Employee" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EERTModel.Employee" Width="1.5" PointX="9.125" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EERTModel.FAQ" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EERTModel.Login" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EERTModel.Report" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EERTModel.Login" Width="1.5" PointX="0.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EERTModel.Report" Width="1.5" PointX="6.25" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="EERTModel.FK_CustomerChat_Login" ManuallyRouted="false" />
         <AssociationConnector Association="EERTModel.FK_Employee_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="EERTModel.FK_Employee_Login" ManuallyRouted="false" />
