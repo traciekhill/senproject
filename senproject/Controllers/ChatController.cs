@@ -13,6 +13,7 @@ namespace senproject.Controllers
     {
         private EERTEntities2 db = new EERTEntities2();
         // GET: Chat
+        public static DateTime startTime;
         public static int UserID=-1;
        public static int userrole=-1;
         public ActionResult Index()
@@ -25,7 +26,9 @@ namespace senproject.Controllers
             userrole = role;
         }
         public ChatController()
-        { }
+        {
+            startTime = DateTime.Now;
+        }
         public void SyncToDatabase(string message)
         {
       
@@ -46,6 +49,29 @@ namespace senproject.Controllers
             db.CustomerChats.Add(chat);
             db.SaveChanges();
             return View();
+        }
+        public static void feedback(int stars)
+        {
+            EERTEntities2 db = new EERTEntities2();
+            Report temp = new Report();
+            var allReports = db.Reports.ToList().ToArray();
+            int tempid = allReports.Length;
+            DateTime currtime = DateTime.Now;
+            DateTime Starttime = ChatController.startTime;
+            int uid = UserID;
+            temp.Date = DateTime.Today;
+            temp.Id = tempid;
+            temp.ResolutionEndTime =TimeSpan.Parse( currtime.ToString());
+            temp.ResolutionStartTime = TimeSpan.Parse(Starttime.ToString());
+            temp.UserId = uid;
+            temp.StarRating = stars;
+            SaveFeedback(temp);
+        }
+        public static void SaveFeedback([Bind(Include ="UserId,StarRating,ResolutionStartTime,ResolutionEndTime,Date,ID")] Report report)
+        {
+            EERTEntities2 db = new EERTEntities2();
+            db.Reports.Add(report);
+            db.SaveChanges();
         }
     }
 }
