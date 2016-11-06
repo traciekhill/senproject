@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using senproject.Models;
+using senproject.WordAttribute;
 
 namespace senproject.Controllers
 {
@@ -21,6 +22,7 @@ namespace senproject.Controllers
             return View(employees.ToList());
         }
 
+        [WordDocument]
         public ActionResult ReportDetails(int? id)
         {
             if (id == null)
