@@ -3,42 +3,48 @@
     ViewBag.Title = "ReportDetails";
 }
 
+
 <h2>Employee Evaluation Report</h2>
-
+<input type="button" value="Export to Word" onclick="location.href='@Url.Action("ReportDetailsDocument", "EmployeesController" ) %>'" />
+<h4>@Html.DisplayFor(model => model.Employee.LastName)</h4>
+<h4>@Html.DisplayFor(model => model.Employee.FirstName)</h4>
+<h4>@Html.DisplayFor(model => model.Employee.UserId)</h4>
+<hr />
+<h4>Call Time</h4>
 <table>
     <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>User ID</th>
-        </tr>
-    </>
-    <tr>
-        <td>@Html.DisplayFor(model => model.Employee.FirstName)</td>
-        <td>@Html.DisplayFor(model => model.Employee.LastName)</td>
-        <td>@Html.DisplayFor(model => model.Employee.UserId)</td>
-    </tr>
-</table>
-
-<table>
-    <thead>
-        <tr>
-            <th>Star Rating</th>
+           
+            <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
-            <th>Date</th>
-
-
+            <th>Total Time</th>
         </tr>
     </thead>
     @foreach (var report in Model.Reports)
     {       
         <tr>
-            <td>@report.StarRating</td>
+            <td>@report.Date.ToShortDateString()</td>
             <td>@report.ResolutionStartTime</td>
             <td>@report.ResolutionEndTime</td>
+            <td>@(report.ResolutionEndTime-report.ResolutionStartTime)</td>
+        </tr>
+    }
+</table>
+<hr />
+<h4>Customer Service Rating</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Star Rating</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    @foreach (var report in Model.Reports)
+    {
+        <tr>
+            <td>@report.StarRating</td>
             <td>@report.Date.ToShortDateString()</td>
-
         </tr>
     }
     <tfoot>
