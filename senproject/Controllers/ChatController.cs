@@ -50,28 +50,6 @@ namespace senproject.Controllers
             db.SaveChanges();
             return View();
         }
-        public static void feedback(int stars)
-        {
-            EERTEntities2 db = new EERTEntities2();
-            Report temp = new Report();
-            var allReports = db.Reports.ToList().ToArray();
-            int tempid = allReports.Length;
-            DateTime currtime = DateTime.Now;
-            DateTime Starttime = ChatController.startTime;
-            int uid = UserID;
-            temp.Date = DateTime.Today;
-            temp.Id = tempid;
-            temp.ResolutionEndTime =TimeSpan.Parse( currtime.ToString());
-            temp.ResolutionStartTime = TimeSpan.Parse(Starttime.ToString());
-            temp.UserId = uid;
-            temp.StarRating = stars;
-            SaveFeedback(temp);
-        }
-        public static void SaveFeedback([Bind(Include ="UserId,StarRating,ResolutionStartTime,ResolutionEndTime,Date,ID")] Report report)
-        {
-            EERTEntities2 db = new EERTEntities2();
-            db.Reports.Add(report);
-            db.SaveChanges();
-        }
+        
     }
 }
