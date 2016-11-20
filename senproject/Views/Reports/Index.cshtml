@@ -19,6 +19,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Login.UserName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.StarRating)
         </th>
         <th>
@@ -30,15 +33,16 @@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Login.UserName)
-        </th>
+       
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login.UserName)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StarRating)
             </td>
@@ -49,9 +53,7 @@
                 @Html.DisplayFor(modelItem => item.ResolutionEndTime)
             </td>
             <td>@item.Date.ToShortDateString()</td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Login.UserName)
-            </td>
+           
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
