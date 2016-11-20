@@ -22,11 +22,17 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using senproject.Models;
 using senproject.Controllers;
+using System.IO;
 namespace senproject
 {
     public class ChatHub : Hub
     {
         protected EERTEntities2 db = new EERTEntities2();
+        ChatController chatty;
+        public ChatHub()
+        {
+            chatty = new ChatController();
+        }
 
         public void Send(string name, string message, int userID)
         {
@@ -45,11 +51,15 @@ namespace senproject
 
         public void Create([Bind(Include = "UserId, Message")] CustomerChat chat)
         {
-            
+           
             db.CustomerChats.Add(chat);
             db.SaveChanges();
         }
-
+        public void SubmitFeedback(int stars)
+        {
+            Console.Out.Write("FUCK YEAH");
+            
+        }
     }
 }
 

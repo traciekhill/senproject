@@ -13,6 +13,7 @@ namespace senproject.Controllers
     {
         private EERTEntities2 db = new EERTEntities2();
         // GET: Chat
+        public static DateTime startTime;
         public static int UserID=-1;
        public static int userrole=-1;
         public ActionResult Index()
@@ -25,7 +26,9 @@ namespace senproject.Controllers
             userrole = role;
         }
         public ChatController()
-        { }
+        {
+            startTime = DateTime.Now;
+        }
         public void SyncToDatabase(string message)
         {
       
@@ -47,5 +50,6 @@ namespace senproject.Controllers
             db.SaveChanges();
             return View();
         }
+        
     }
 }

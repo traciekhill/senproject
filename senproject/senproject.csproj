@@ -356,6 +356,7 @@
     <Content Include="Views\CSR\Index.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Home\CSRChat.cshtml" />
     <Content Include="Views\Employees\ReportDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
