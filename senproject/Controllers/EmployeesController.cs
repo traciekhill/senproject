@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using senproject.Models;
+using senproject.WordAttribute;
 
 namespace senproject.Controllers
 {
@@ -19,6 +20,36 @@ namespace senproject.Controllers
         {
             var employees = db.Employees.Include(e => e.Employee2).Include(e => e.Login);
             return View(employees.ToList());
+        }
+
+        [WordDocument]
+        public ActionResult ReportDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Employee employee = db.Employees.Find(id);
+            var reports = db.Reports
+                .Where(r => r.Login.UserId
+                    == employee.Login.UserId)
+                .ToArray();
+
+            var average = reports.Average(r => r.StarRating);
+            
+
+            if (employee == null ||
+                reports == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new EmployeeDetails()
+            {
+                Id = employee.Id,
+                Employee = employee,
+                Reports = reports,
+                ReportAverage = average
+            });
         }
 
         // GET: Employees/Details/5

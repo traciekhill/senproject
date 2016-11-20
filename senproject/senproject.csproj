@@ -212,7 +212,6 @@
     <Compile Include="Controllers\CustomerFAQController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\FAQsController.cs" />
-    <Compile Include="Controllers\GenReportController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Models\CustomerChat.cs">
@@ -236,6 +235,7 @@
     <Compile Include="Models\Employee.cs">
       <DependentUpon>EERT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeeDetails.cs" />
     <Compile Include="Models\FAQ.cs">
       <DependentUpon>EERT.tt</DependentUpon>
     </Compile>
@@ -255,6 +255,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WordAttribute\WordDocumentAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -352,11 +353,12 @@
     <Content Include="Views\Reports\Details.cshtml" />
     <Content Include="Views\Reports\Edit.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
-    <Content Include="Views\GenReport\Index.cshtml" />
     <Content Include="Views\CustomerFAQ\Index.cshtml" />
     <Content Include="Views\CSR\Index.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Employees\ReportDetails.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Home\CSRChat.cshtml" />
   </ItemGroup>
   <ItemGroup>

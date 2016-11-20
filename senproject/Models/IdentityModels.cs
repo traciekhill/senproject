@@ -21,7 +21,7 @@ namespace senproject.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("EERTIdentity", throwIfV1Schema: false)
         {
         }
 

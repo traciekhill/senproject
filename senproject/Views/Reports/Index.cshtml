@@ -41,9 +41,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ResolutionEndTime)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
+            <td>@item.Date.ToShortDateString()</td>
             <td>
                 @Html.DisplayFor(modelItem => item.Login.UserName)
             </td>
@@ -56,3 +54,6 @@
     }
 
 </table>
+<p>
+    @Html.ActionLink("Back to Manager's View", "Index", "Employees", new { area = "Employees" }, null)
+</p>
