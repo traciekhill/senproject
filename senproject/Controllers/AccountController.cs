@@ -120,7 +120,7 @@ namespace senproject.Controllers
                 if (role == 1)
                 {
                     ChatController setting = new ChatController(UserID, role);
-                    return RedirectToLocal("/home/Chat");
+                    return RedirectToLocal("/home/CSRChat");
                 }
                 else if (role == 0)
                     return RedirectToLocal("/Employees?area=Employees");

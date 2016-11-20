@@ -1,23 +1,12 @@
-﻿@{
-    ViewBag.Title = "Chat";
+﻿
+@{
+    ViewBag.Title = "CSRChat";
 }
-<h2>Chat</h2>
+
+<h2>CSRChat</h2>
 <div class="container">
     <input type="text" id="message" />
     <input type="button" id="sendmessage" value="Send" />
-    <span class="starRating">
-        <input id="rating5" type="radio" name="rating" value="5" onclick="location.href='@Url.Action("feedback", "Home",new { stars=5})'">
-        <label for="rating5">5</label>
-        <input id="rating4" type="radio" name="rating" value="4" onclick="location.href='@Url.Action("feedback", "Home",new { stars=4})'">
-        <label for="rating4">4</label>
-        <input id="rating3" type="radio" name="rating" value="3" onclick="location.href='@Url.Action("feedback", "Home",new { stars=3})'">
-        <label for="rating3">3</label>
-        <input id="rating2" type="radio" name="rating" value="2" onclick="location.href='@Url.Action("feedback", "Home",new { stars=2})'">
-        <label for="rating2">2</label>
-        <input id="rating1" type="radio" name="rating" value="1" onclick="location.href='@Url.Action("feedback", "Home",new { stars=1})'">
-        <label for="rating1">1</label>
-    </span>
-    <label for="starRating">Give your CSR a star rating. Please be advised that this will end the chat.</label>
     <input type="hidden" id="displayname" />
     <ul id="discussion"></ul>
 </div>
@@ -32,7 +21,7 @@
     <script>
         $(function () {
             // Reference the auto-generated proxy for the hub.
-            
+
             var chat = $.connection.chatHub;
             // Create a function that the hub can call back to display messages.
             chat.client.addNewMessageToPage = function (name, message) {
@@ -52,7 +41,7 @@
                     // Clear text box and reset focus for next comment.
                     $('#message').val('').focus();
                 });
-                
+
             });
 
         });
