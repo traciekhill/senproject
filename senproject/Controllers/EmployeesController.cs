@@ -15,10 +15,29 @@ namespace senproject.Controllers
         private EERTEntities2 db = new EERTEntities2();
 
         // GET: Employees
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string searchString)
         {
-            var employees = db.Employees.Include(e => e.Employee2).Include(e => e.Login);
-            return View(employees.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+           
+            var employee = from s in db.Employees
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                employee = employee.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    employee = employee.OrderByDescending(s => s.LastName);
+                    break;
+               
+                default:
+                    employee = employee.OrderBy(s => s.LastName);
+                    break;
+            }
+
+            return View(employee.ToList());
         }
 
         public ActionResult ReportDetails(int? id)
