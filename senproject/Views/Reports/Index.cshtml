@@ -16,6 +16,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<p>
+    @Html.ActionLink("Back to Manager's View", "Index", "Employees", new { area = "Employees" }, null)
+</p>
 <table class="table">
     <tr>
         <th>
@@ -63,6 +66,3 @@
     }
 
 </table>
-<p>
-    @Html.ActionLink("Back to Manager's View", "Index", "Employees", new { area = "Employees" }, null)
-</p>
