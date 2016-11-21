@@ -360,6 +360,7 @@
     <Content Include="Views\Employees\ReportDetails.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Home\CSRChat.cshtml" />
+    <Content Include="Views\Employees\ViewReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

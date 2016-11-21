@@ -40,7 +40,34 @@ namespace senproject.Controllers
 
             return View(employee.ToList());
         }
+        public ActionResult ViewReport(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Employee employee = db.Employees.Find(id);
+            var reports = db.Reports
+                .Where(r => r.Login.UserId
+                    == employee.Login.UserId)
+                .ToArray();
 
+            var average = reports.Average(r => r.StarRating);
+
+
+            if (employee == null ||
+                reports == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new EmployeeDetails()
+            {
+                Id = employee.Id,
+                Employee = employee,
+                Reports = reports,
+                ReportAverage = average
+            });
+        }
         [WordDocument]
         public ActionResult ReportDetails(int? id)
         {

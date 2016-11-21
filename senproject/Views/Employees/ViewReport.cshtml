@@ -1,11 +1,15 @@
 ﻿@model senproject.Models.EmployeeDetails
 @{
-    ViewBag.Title = "ReportDetails";
+    ViewBag.Title = "ViewReport";
 }
 
 
 <h2>Employee Evaluation Report</h2>
-<input type="button" value="Export to Word" onclick="location.href='@Url.Action("ReportDetailsDocument", "EmployeesController" ) %>'" />
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
 <h4>@Html.DisplayFor(model => model.Employee.LastName)</h4>
 <h4>@Html.DisplayFor(model => model.Employee.FirstName)</h4>
 <h4>@Html.DisplayFor(model => model.Employee.UserId)</h4>
@@ -14,7 +18,7 @@
 <table>
     <thead>
         <tr>
-           
+
             <th>Date</th>
             <th>Start Time</th>
             <th>End Time</th>
@@ -22,12 +26,12 @@
         </tr>
     </thead>
     @foreach (var report in Model.Reports)
-    {       
+    {
         <tr>
             <td>@report.Date.ToShortDateString()</td>
             <td>@report.ResolutionStartTime</td>
             <td>@report.ResolutionEndTime</td>
-            <td>@(report.ResolutionEndTime-report.ResolutionStartTime)</td>
+            <td>@(report.ResolutionEndTime - report.ResolutionStartTime)</td>
         </tr>
     }
 </table>
